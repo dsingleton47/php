@@ -52,6 +52,7 @@ RUN buildDeps=" \
 		--enable-mysqlnd \
 		--enable-bcmath \
 		--with-curl \
+		--with-mhash \
 		--with-openssl \
 		--with-readline \
 		--with-recode \

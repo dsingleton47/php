@@ -48,8 +48,10 @@ RUN buildDeps=" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
 		$PHP_EXTRA_CONFIGURE_ARGS \
 		--disable-cgi \
+		--enable-bcmath \
 		--enable-mysqlnd \
 		--with-curl \
+		--with-mhash \
 		--with-openssl \
 		--with-readline \
 		--with-recode \

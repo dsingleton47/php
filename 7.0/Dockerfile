@@ -48,13 +48,14 @@ RUN buildDeps=" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
 		$PHP_EXTRA_CONFIGURE_ARGS \
 		--disable-cgi \
+		--enable-bcmath \
 		--enable-mysqlnd \
 		--with-curl \
+		--with-mhash \
 		--with-openssl \
 		--with-readline \
 		--with-recode \
 		--with-zlib \
-                --enable-bcmath \
 	&& make -j"$(nproc)" \
 	&& make install \
 	&& { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
