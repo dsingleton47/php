@@ -49,6 +49,7 @@ RUN buildDeps=" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
 		$PHP_EXTRA_CONFIGURE_ARGS \
 		--disable-cgi \
+		--enable-embed=static \
 		--enable-mysqlnd \
 		--enable-bcmath \
 		--with-curl \
@@ -60,6 +61,7 @@ RUN buildDeps=" \
 	&& make -j"$(nproc)" \
 	&& make install \
 	&& { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
+	&& { mkdir -p /opt/bin && cp /usr/local/bin/php /opt/bin/php } \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
 	&& make clean
 
